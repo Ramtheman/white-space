@@ -12,5 +12,6 @@ testers = {
   Mark: { first_name: "Mark", last_name: "de Courcy Ling", email: "m.decourcyling@gmail.com", password: 'password' }
 }
 
-puts testers
-puts "hello"
+testers.each do |tester|
+  puts tester
+end
