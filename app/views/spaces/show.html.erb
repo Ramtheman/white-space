@@ -3,6 +3,8 @@
 <p>Price: £<%= @space.price %></p>
 <p>Owner: <%= @space.user.first_name %> <%= @space.user.last_name %></p>
 
+<%= link_to 'Book this space', new_space_booking_path(@space) %>
+<br>
 <%= link_to 'Edit this space', edit_space_path(@space) %>
 <br>
 <%= link_to 'Back to spaces list', spaces_path %>

@@ -11,6 +11,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.space = Space.find(params(:space_id))
+    @booking.save
+    redirect_to bookings_path
   end
 
   private
