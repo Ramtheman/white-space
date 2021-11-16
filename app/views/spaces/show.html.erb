@@ -1,6 +1,7 @@
 <h2><%= @space.title %></h2>
-<p><%= @space.space_type %></p>
-<p><%= @space.price %></p>
+<p>Type of ad-space: <%= @space.space_type %></p>
+<p>Price: £<%= @space.price %></p>
+<p>Owner: <%= @space.user.first_name %> <%= @space.user.last_name %></p>
 
 <%= link_to 'Edit this space', edit_space_path(@space) %>
 <br>
