@@ -1,9 +1,9 @@
 <div class="container mt-5">
   <h1>All Spaces</h1>
-  <% @spaces.each do |space| %>
-  <h4><%= space.title %></h4>
-  <p><%= space.space_type %></p>
-  <p>£<%= space.price %></p>
+    <% @spaces.each do |space| %>
+    <h4><%= space.title %></h4>
+    <p><%= space.space_type %></p>
+    <p>£<%= space.price %></p>
   <% end %>
   <%= link_to "Back to home", root_path, class: 'btn btn-primary' %>
 </div>
