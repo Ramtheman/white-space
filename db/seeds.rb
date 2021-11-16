@@ -5,13 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-testers = {
-  Rami: { first_name: "Rami", last_name: "Assaf", email: "ramiw.assaf@gmail.com", password: 'password' },
-  Simon: { first_name: "Simon", last_name: "Foster", email: "simonfos74@gmail.com", password: 'password' },
-  Will: { first_name: "Will", last_name: "Holmes", email: "willholmes60@gmail.com", password: 'password' },
-  Mark: { first_name: "Mark", last_name: "de Courcy Ling", email: "m.decourcyling@gmail.com", password: 'password' }
-}
+require 'faker'
+User.destroy_all
+Space.destroy_all
+
+testers = [
+  ["Rami", "Assaf", "ramiw.assaf@gmail.com", 'password'],
+  ["Simon", "Foster", "simonfos74@gmail.com", 'password'],
+  ["Will", "Holmes", "willholmes60@gmail.com", 'password'],
+  ["Mark", "de Courcy Ling", "m.decourcyling@gmail.com", 'password']
+]
 
 testers.each do |tester|
-  puts tester
+  person = User.new(first_name: tester[0], last_name: tester[1], email: tester[2], password: tester[3])
+  person.save
+  5.times do
+    title = Faker::Company.name
+    typo = Faker::Company.bs
+    price = rand(1000)
+    space = Space.new(title: title, space_type: typo, price: price)
+    space.user = person
+    space.save
+  end
 end
