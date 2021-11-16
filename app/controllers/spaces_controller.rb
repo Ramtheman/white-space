@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   def index
-    @space = Space.all
+    @spaces = Space.all
   end
 
   def show
@@ -13,6 +13,7 @@ class SpacesController < ApplicationController
 
   def create
     @space = Space.new(space_params)
+    @space.user = current_user
     if @space.save
       redirect_to space_path(@space)
     else
@@ -27,11 +28,11 @@ class SpacesController < ApplicationController
 
   private
 
-  def set_space
-    @space = Space.find(params[:id])
-  end
+  # def set_space
+  #   @space = Space.find(params[:id])
+  # end
 
   def space_params
-    params.require(:space).permit(:title, :type, :price)
+    params.require(:space).permit(:title, :space_type, :price)
   end
 end
