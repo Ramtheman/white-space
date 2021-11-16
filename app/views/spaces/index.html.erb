@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h1>All Spaces</h1>
     <% @spaces.each do |space| %>
-    <h4><%= space.title %></h4>
+    <h4><%= link_to space.title, space_path(space) %></h4>
     <p><%= space.space_type %></p>
     <p>£<%= space.price %></p>
   <% end %>
