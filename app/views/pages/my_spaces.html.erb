@@ -4,6 +4,7 @@
     <h4><%= space.title %></h4>
     <p><%= space.space_type %></p>
     <p>£<%= space.price %></p>
-  <% end %>
+    <%= link_to "Delete this space", space_path(space), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure?"} %>
+  <% end %><br><br>
   <%= link_to "Back to home", root_path, class: 'btn btn-primary' %>
 </div>
