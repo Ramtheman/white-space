@@ -1,2 +1,8 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<p>to go in a navbar</p>
+<%= link_to 'Dashboard/my listed space', my_spaces_path %>
+<%= link_to 'Spaces to let', spaces_path %>
+<%= link_to 'Bookings', space_bookings_path(@space) %>
+<%#= need this last one to link to the user's bookings, not the owner's %>
