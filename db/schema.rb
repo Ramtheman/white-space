@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_171750) do
+ActiveRecord::Schema.define(version: 2021_11_16_124546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_11_15_171750) do
 
   create_table "spaces", force: :cascade do |t|
     t.string "title"
-    t.string "type"
+    t.string "space_type"
     t.integer "price"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
