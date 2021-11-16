@@ -1,0 +1,15 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h3>Create a new space</h3>
+        <%= simple_form_for @space do |f| %>
+          <%= f.input :title, placeholder: 'You title here' %>
+          <%= f.input :space_type, placeholder: 'Type of space' %>
+          <%= f.input :price, placeholder: 'Price of space' %>
+          <%= f.submit class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
