@@ -1,5 +1,5 @@
 class Space < ApplicationRecord
   belongs_to :user
   has_many :bookings
-  validates :title, :type, :price, presence: true
+  validates :title, :space_type, :price, presence: true
 end
