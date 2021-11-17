@@ -18,8 +18,8 @@ testers = [
 # creating first user and two spaces
 rami = User.new(testers[0])
 rami.save
-face_tat = Space.new(title: 'My face', space_type: 'Tattoo', price: 1000)
-car_ad = Space.new(title: 'Post your ad on my car', space_type: 'Car sticker', price: 500)
+face_tat = Space.new(title: 'My face', space_type: 'Tattoo', price: 1000, type_image: "tattoo.jpg")
+car_ad = Space.new(title: 'Post your ad on my car', space_type: 'Car sticker', price: 500, type_image: "car.jpg")
 face_tat.user = rami
 face_tat.save
 car_ad.user = rami
@@ -28,20 +28,20 @@ car_ad.save
 # creating second user and two spaces
 simon = User.new(testers[1])
 simon.save
-name_change = Space.new(title: 'I will change my name to your brand!', space_type: 'Legal name change', price: 2000)
+name_change = Space.new(title: 'I will change my name to your brand!', space_type: 'Legal name change', price: 2000, type_image: "name.jpg")
 name_change.user = simon
 name_change.save
 
 # creating third user and two spaces
 will = User.new(testers[2])
 will.save
-bagpack = Space.new(title: 'Stylize my bagpack with your ad', space_type: 'Bagpack', price: 200)
+bagpack = Space.new(title: 'Stylize my bagpack with your ad', space_type: 'Bagpack', price: 200, type_image: "bagpack.jpg")
 bagpack.user = will
 bagpack.save
 
 # creating last user and two spaces
 mark = User.new(testers[3])
 mark.save
-lawn = Space.new(title: "My lawn is the perfect place for your marketing", space_type: 'Front lawn', price: 500)
+lawn = Space.new(title: "My lawn is the perfect place for your marketing", space_type: 'Front lawn', price: 500, type_image: "lawn.jpg")
 lawn.user = mark
 lawn.save

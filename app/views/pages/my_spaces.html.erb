@@ -2,7 +2,7 @@
   <h1><%= current_user.first_name %>'s Spaces To Let</h1>
     <% @spaces.each do |space| %>
       <div class="card-product">
-        <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+        <%= image_tag "#{space.type_image}", class: "image"%>
         <div class="card-product-infos">
           <h4><%= link_to space.title, space_path(space) %></h4>
           <p><%= space.space_type %></p>

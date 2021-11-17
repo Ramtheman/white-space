@@ -4,7 +4,7 @@
     <% @spaces.each do |space| %>
       <div class="col-12 col-md-6">
         <div class="card-product">
-          <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+          <%= image_tag "#{space.type_image}", class: "image"%>
           <div class="card-product-infos">
             <h4><%= link_to space.title, space_path(space) %></h4>
             <p>Owner: <%= space.user.first_name %> <%= space.user.last_name %></p>
