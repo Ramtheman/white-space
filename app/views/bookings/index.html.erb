@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <h1><%= current_user.first_name %>'s Bookings</h1>
+  <h1><%= current_user.first_name %>'s Bookings:</h1>
     <% @bookings.each do |booking| %>
     <h4>Space: <%= booking.space.title %></h4>
     <p>Type: <%= booking.space.space_type %></p>
