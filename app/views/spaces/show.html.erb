@@ -1,7 +1,13 @@
-<h2><%= @space.title %></h2>
-<p>Type of ad-space: <%= @space.space_type %></p>
-<p>Price: £<%= @space.price %></p>
-<p>Owner: <%= @space.user.first_name %> <%= @space.user.last_name %></p>
+<div class="card-product">
+  <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+  <div class="card-product-infos">
+    <h2><%= @space.title %></h2>
+    <p>Type of ad-space: <%= @space.space_type %></p>
+    <p>Price: £<%= @space.price %></p>
+    <p>Owner: <%= @space.user.first_name %> <%= @space.user.last_name %></p>
+  </div>
+</div>
+
 
 <% if @space.user == current_user %>
   <%= link_to 'Edit this space', edit_space_path(@space) %>
