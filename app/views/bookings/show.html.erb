@@ -5,4 +5,7 @@
 <p>From: <%= @booking.start_date %></p>
 <p>To: <%= @booking.end_date %></p>
 
+<%# <%= link_to 'Edit this booking', edit_space_path(@space) %>
+<%= link_to 'Delete this booking', booking_path(@booking), method: :destroy %>
+  <br>
 <%= link_to "Back to bookings page", bookings_path, class: 'btn btn-success' %>
