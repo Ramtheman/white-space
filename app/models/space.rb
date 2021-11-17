@@ -1,6 +1,6 @@
 class Space < ApplicationRecord
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   validates :title, :space_type, :price, :location, presence: true
 
   geocoded_by :location
