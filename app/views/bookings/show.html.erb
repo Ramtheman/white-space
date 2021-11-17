@@ -1,0 +1,8 @@
+<h2><%= @booking.space.title %></h2>
+<p>Type of ad-space: <%= @booking.space.space_type %></p>
+<p>Price: £<%= @booking.space.price %></p>
+<p>Owner: <%= @booking.space.user.first_name %> <%= @booking.space.user.last_name %></p>
+<p>From: <%= @booking.start_date %></p>
+<p>To: <%= @booking.end_date %></p>
+
+<%= link_to "Back to bookings page", bookings_path, class: 'btn btn-success' %>
