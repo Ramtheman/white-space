@@ -1,9 +1,26 @@
 <div class="container mt-5">
   <h1>All Spaces</h1>
+  <div class="row">
     <% @spaces.each do |space| %>
-    <h4><%= link_to space.title, space_path(space) %></h4>
-    <p><%= space.space_type %></p>
-    <p>£<%= space.price %></p>
-  <% end %>
+      <div class="col-12 col-md-6">
+        <div class="card-product">
+          <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+          <div class="card-product-infos">
+            <h4><%= link_to space.title, space_path(space) %></h4>
+            <p>-------------------------</p>
+            <p><%= space.space_type %></p>
+            <p>£<%= space.price %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div style="width: 100%; height: 600px;"
+       data-controller="mapbox"
+       data-mapbox-markers-value="<%= @markers.to_json %>"
+       data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
   <%= link_to "Back to home", root_path, class: 'btn btn-primary' %>
 </div>

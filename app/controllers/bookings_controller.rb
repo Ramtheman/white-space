@@ -5,14 +5,23 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @space = Space.find(params[:space_id])
   end
 
   def create
+    @space = Space.find(params[:space_id])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    @booking.space = Space.find(params(:space_id))
-    @booking.save
-    redirect_to bookings_path
+    @booking.space = @space
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      render :new
+    end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
   end
 
   private
