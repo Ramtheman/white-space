@@ -22,8 +22,9 @@ testers.each do |tester|
   5.times do
     title = Faker::Company.name
     typo = Faker::Company.bs
+    location = Faker::Address.country
     price = rand(1000)
-    space = Space.new(title: title, space_type: typo, price: price)
+    space = Space.new(title: title, space_type: typo, price: price, location: location)
     space.user = person
     space.save
   end
