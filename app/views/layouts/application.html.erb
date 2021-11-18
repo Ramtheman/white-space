@@ -13,14 +13,15 @@
 
   <body>
     <div class="page-container">
-          <% unless action_name == "home" %>
-              <div class="navbar-container"><%= render "shared/navbar" %></div>
-              <div class="footer-container"><%= render "shared/footer" %></div>
-          <% end %>
+      <% unless action_name == "home" %>
+        <div class="navbar-container"><%= render "shared/navbar" %></div>
+      <% end %>
       <div class="content-container"><%= yield %></div>
+      <% unless action_name == "home" %>
+        <div class="footer-container"><%= render "shared/footer" %></div>
+      <% end %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
-
   </body>
 </html>
