@@ -1,16 +1,30 @@
 <div class="container mt-5">
-  <h1><%= current_user.first_name %>'s Spaces To Let</h1>
-    <% @spaces.each do |space| %>
-      <div class="card-product">
-        <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
-        <div class="card-product-infos">
-          <h4><%= link_to space.title, space_path(space) %></h4>
-          <p><%= space.space_type %></p>
-          <p>£<%= space.price %></p>
-          <%= link_to "Delete this space", space_path(space), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure?"} %>
+  <%= link_to "Create new space", new_space_path, class: 'btn btn-success border mb-3' %>
+  <div class="row">
+    <div class="col-6">
+      <h1><%= current_user.first_name %>'s Spaces To Let</h1>
+      <% @spaces.each do |space| %>
+        <div class="card-product">
+          <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+          <div class="card-product-infos">
+            <h4><%= link_to space.title, space_path(space) %></h4>
+            <p><%= space.space_type %></p>
+            <p>£<%= space.price %></p>
+            <%= link_to 'Edit this space', edit_space_path(space) %>
+            <%= link_to "Delete this space", space_path(space), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure?"} %>
+          </div>
         </div>
-      </div>
-    <% end %><br><br>
-  <%= link_to "Back to home", root_path, class: 'btn btn-primary' %>
-  <%= link_to "Create new space", new_space_path, class: 'btn btn-success' %>
+      <% end %><br><br>
+    </div>
+    <div class="col-6">
+      <h1>Pending Bookings</h1>
+        <% @bookings.each do |booking| %>
+          <%= booking.space_id %><br>
+        <% end %>
+        <% @spaces.each do |space| %>
+          <%= space.id %><br>
+        <% end %>
+      <h1>Approved Bookings</h1>
+    </div>
+  </div>
 </div>

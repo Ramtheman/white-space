@@ -6,5 +6,8 @@ class PagesController < ApplicationController
 
   def my_spaces
     @spaces = Space.where(user: current_user)
+    @bookings = Booking.all
+
+    # @my_bookings =
   end
 end
