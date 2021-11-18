@@ -35,9 +35,9 @@ name_change.save
 # creating third user and two spaces
 will = User.new(testers[2])
 will.save
-bagpack = Space.new(title: 'Stylize my bagpack with your ad', space_type: 'Bagpack', price: 200, type_image: "bagpack.jpg", location: 'WC1E 6JW')
-bagpack.user = will
-bagpack.save
+backpack = Space.new(title: 'Stylize my backpack with your ad', space_type: 'Backpack', price: 200, type_image: "backpack.jpg", location: 'WC1E 6JW')
+backpack.user = will
+backpack.save
 
 # creating last user and two spaces
 mark = User.new(testers[3])
