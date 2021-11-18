@@ -20,13 +20,65 @@
     </div>
     <div class="col-6">
       <h1>Pending Bookings</h1>
-        <% @bookings.each do |booking| %>
-          <%= booking.space_id %><br>
-        <% end %>
-        <% @spaces.each do |space| %>
-          <%= space.id %><br>
+        <% @my_bookings.each do |booking| %>
+          <% if booking.confirmed.nil? %>
+            <div class="card-product">
+              <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+              <div class="card-product-infos">
+                <p>Type: <%= booking.space.space_type %></p>
+                <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
+                <p>From: <%= booking.start_date %></p>
+                <p>To: <%= booking.end_date %></p>
+                <p>Duration:</p>
+                <p>Price: £<%= booking.space.price %></p>
+                <%= simple_form_for (booking) do |f| %>
+                  <%= f.hidden_field :confirmed, value: true %>
+                  <%= f.submit 'Accept', class: 'btn btn-success' %>
+                <% end %>
+                <%= simple_form_for (booking) do |f| %>
+                  <%= f.hidden_field :confirmed, value: false %>
+                  <%= f.submit 'Reject', class: 'btn btn-danger' %>
+                <% end %>
+                <%# accept button %>
+                <%# <button class="btn btn-success btn-lg"
+                        data-booking-confirmation-target="accept"
+                        data-action="click->booking-confirmation#accept">Accept</button> %>
+                <%# reject button %>
+                <%# <button class="btn btn-danger btn-lg"
+                        data-booking-confirmation-target="reject"
+                        data-action="click->booking-confirmation#reject">Reject</button> %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       <h1>Approved Bookings</h1>
+        <% @my_bookings.each do |booking| %>
+            <% if booking.confirmed == true %>
+              <div class="card-product">
+                <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+                  <p>Type: <%= booking.space.space_type %></p>
+                  <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
+                  <p>From: <%= booking.start_date %></p>
+                  <p>To: <%= booking.end_date %></p>
+                  <p>Duration:</p>
+                  <p>Price: £<%= booking.space.price %></p>
+              </div>
+            <% end %>
+        <% end %>
+      <h1>Rejected Bookings</h1>
+      <% @my_bookings.each do |booking| %>
+          <% if booking.confirmed == false %>
+            <div class="card-product">
+              <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+                <p>Type: <%= booking.space.space_type %></p>
+                <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
+                <p>From: <%= booking.start_date %></p>
+                <p>To: <%= booking.end_date %></p>
+                <p>Duration:</p>
+                <p>Price: £<%= booking.space.price %></p>
+            </div>
+          <% end %>
+      <% end %>
     </div>
   </div>
 </div>
