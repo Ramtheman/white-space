@@ -51,3 +51,15 @@
 text-decoration: none;
 color: black;
 }
+
+.pending {
+  border-right: 12px solid orange ;
+}
+
+.approved {
+  border-right: 12px solid green ;
+}
+
+.rejected {
+  border-right: 12px solid red ;
+}

@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="home-container mt-5">
 
   <%= link_to "Create new space", new_space_path, class: 'btn btn-success border mb-3' %>
   <div class="row">
@@ -10,8 +10,8 @@
           <div class="card-product-infos">
             <h4><%= link_to space.title, space_path(space) %></h4>
             <p><%= space.space_type %></p>
-            <p>£<%= space.price %></p>
-            <%= link_to 'Edit this space', edit_space_path(space) %>
+            <p>£<%= space.price %>/day</p>
+            <%# <%= link_to 'Edit this space', edit_space_path(space) %>
             <%= link_to "Delete this space", space_path(space), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure?"} %>
           </div>
 
@@ -20,13 +20,69 @@
     </div>
     <div class="col-6">
       <h1>Pending Bookings</h1>
-        <% @bookings.each do |booking| %>
-          <%= booking.space_id %><br>
+        <% @my_bookings.each do |booking| %>
+          <% if booking.confirmed.nil? %>
+            <div class="card-product pending">
+              <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+              <div class="card-product-infos">
+                <p>Type: <%= booking.space.space_type %></p>
+                <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
+                <p>From: <%= booking.start_date %></p>
+                <p>To: <%= booking.end_date %></p>
+                <p>Duration:</p>
+                <p>Price: £<%= booking.space.price %>/day</p>
+                <%= simple_form_for (booking) do |f| %>
+                  <%= f.hidden_field :confirmed, value: true %>
+                  <%= f.submit 'Accept', class: 'btn btn-success' %>
+                <% end %>
+                <%= simple_form_for (booking) do |f| %>
+                  <%= f.hidden_field :confirmed, value: false %>
+                  <%= f.submit 'Reject', class: 'btn btn-danger' %>
+                <% end %>
+                <%# accept button %>
+                <%# <button class="btn btn-success btn-lg"
+                        data-booking-confirmation-target="accept"
+                        data-action="click->booking-confirmation#accept">Accept</button> %>
+                <%# reject button %>
+                <%# <button class="btn btn-danger btn-lg"
+                        data-booking-confirmation-target="reject"
+                        data-action="click->booking-confirmation#reject">Reject</button> %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-        <% @spaces.each do |space| %>
-          <%= space.id %><br>
-        <% end %>
+        <b></b>
+        <hr>
       <h1>Approved Bookings</h1>
+        <% @my_bookings.each do |booking| %>
+            <% if booking.confirmed == true %>
+              <div class="card-product approved">
+                <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+                  <p>Type: <%= booking.space.space_type %></p>
+                  <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
+                  <p>From: <%= booking.start_date %></p>
+                  <p>To: <%= booking.end_date %></p>
+                  <p>Duration:</p>
+                  <p>Total price: £<%= booking.space.price %></p>
+              </div>
+            <% end %>
+        <% end %>
+        <b></b>
+        <hr>
+      <h1>Rejected Bookings</h1>
+      <% @my_bookings.each do |booking| %>
+          <% if booking.confirmed == false %>
+            <div class="card-product rejected">
+              <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+                <p>Type: <%= booking.space.space_type %></p>
+                <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
+                <p>From: <%= booking.start_date %></p>
+                <p>To: <%= booking.end_date %></p>
+                <p>Duration:</p>
+                <p>Total price: £<%= booking.space.price %></p>
+            </div>
+          <% end %>
+      <% end %>
     </div>
   </div>
 </div>

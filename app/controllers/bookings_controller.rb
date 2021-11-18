@@ -20,6 +20,16 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.confirmed = params[:booking][:confirmed]
+    if @booking.save
+      redirect_to my_spaces_path
+    else
+      render :my_spaces_path
+    end
+  end
+
   def show
     @booking = Booking.find(params[:id])
   end
@@ -29,4 +39,5 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
   end
+
 end
