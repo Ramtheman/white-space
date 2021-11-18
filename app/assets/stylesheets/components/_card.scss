@@ -1,7 +1,7 @@
 .card-product {
   overflow: hidden;
   height: 180px;
-  background: #D3C6C6;
+  background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
@@ -40,6 +40,14 @@
   padding: 16px;
 }
 
-.card-product .card-product-infos h4 :hover {
-  color: navy;
+// .card-product .card-product-infos h4:hover {
+//   color: navy;
+// }
+
+.list-link {
+  color: rgb(104, 98, 98);
+}
+.list-link:hover {
+text-decoration: none;
+color: black;
 }
