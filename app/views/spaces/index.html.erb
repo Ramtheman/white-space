@@ -26,7 +26,7 @@
   <div class="row">
     <% @spaces.each do |space| %>
       <div class="col-12 col-md-6">
-        <div class="card-product">
+        <div class="card-product ">
           <%= image_tag "#{space.type_image}", class: "image"%>
           <div class="card-product-infos">
             <h4><%= link_to space.title, space_path(space) %></h4>
