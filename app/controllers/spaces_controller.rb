@@ -1,9 +1,8 @@
 class SpacesController < ApplicationController
   def index
     @spaces = Space.all
-    @users = User.all
 
-    @markers = @users.geocoded.map do |space|
+    @markers = @spaces.geocoded.map do |space|
       {
         lat: space.latitude,
         lng: space.longitude
@@ -43,6 +42,6 @@ class SpacesController < ApplicationController
   # end
 
   def space_params
-    params.require(:space).permit(:title, :space_type, :price)
+    params.require(:space).permit(:title, :space_type, :location, :price)
   end
 end

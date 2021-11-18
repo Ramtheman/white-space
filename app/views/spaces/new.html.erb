@@ -8,6 +8,7 @@
           <% space_types = ['Car sticker', 'Tattoo', 'Bagpack', 'Legal name change', 'Front lawn'] %>
           <%= f.input :space_type, as: :select, collection: space_types, prompt:'Type of space', label: false %>
           <%= f.input :price, placeholder: 'Price of space' %>
+          <%= f.input :location, placeholder: 'What postcode' %>
           <%= f.submit class: 'btn btn-primary' %>
         <% end %>
       </div>
