@@ -1,16 +1,19 @@
 <h2><%= @space.title %></h2>
 <h4>Ad-space in question:</h4>
-<%= image_tag "#{@space.type_image}", style:"height:250px"%>
+
+<% if @space.photo.attached? %>
+  <%= cl_image_tag @space.photo.key, style:"height:250px"%>
+<% else %>
+  <%= image_tag "potato.jpg", style:"height:250px" %>
+<% end %>
+
 <br>
 <br>
 <p>Type of ad-space: <%= @space.space_type %></p>
 <p>Price: £<%= @space.price %></p>
 <p>Owner: <%= @space.user.first_name %> <%= @space.user.last_name %></p>
 
-<% if @space.user == current_user %>
-  <%= link_to 'Edit this space', edit_space_path(@space) %>
-  <br>
-<% else %>
+<% if @space.user != current_user %>
   <%= link_to 'Book this space', new_space_booking_path(@space) %>
   <br>
 <% end %>
