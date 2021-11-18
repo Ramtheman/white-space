@@ -1,28 +1,21 @@
 <div class="container mt-5">
-  <h1>Search spaces:</h1>
-    <%= form_tag(spaces_path, method: :get) do %>
-      <%= text_field_tag(:search, params[:search]) %>
-      <%= submit_tag ("Search") %>
-    <% end %>
 
+  <%# <input type="text" name="query" id="query" placeholder= "I want to find…">
+  <input type="submit" name="commit" value="Search" class="btn btn-default"> %>
 
-    <% @spaces.each do |space| %>
-      <div class="col-12 col-md-6">
-        <div class="card-product">
-          <%= image_tag "#{space.type_image}", class: "image"%>
-          <div class="card-product-infos">
-            <h4><%= link_to space.title, space_path(space) %></h4>
-            <p>Owner: <%= space.user.first_name %> <%= space.user.last_name %></p>
-            <p>-------------------------</p>
-            <p><%= space.space_type %></p>
-            <p>£<%= space.price %></p>
-          </div>
-        </div>
-      </div>
-    <% end %>
+  <%= form_tag spaces_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a space"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% if @all_spaces == false %>
+    <%= button_to "Back to All Spaces", spaces_path %>
+  <% end %>
+<% end %>
 
-
-  <h1>All Spaces</h1>
+  <h1><%= @all_spaces ? "All spaces" : "Search results" %></h1>
   <div class="row">
     <% @spaces.each do |space| %>
       <div class="col-12 col-md-6">

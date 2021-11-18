@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   end
   resources :bookings, except: %i[new create]
 
+  resources :search, only: [:index]
+
   get '/my_spaces', to: 'pages#my_spaces'
 end
