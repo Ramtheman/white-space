@@ -21,7 +21,6 @@ class SpacesController < ApplicationController
   def create
     @space = Space.new(space_params)
     @space.user = current_user
-    @space.type_image = "potato.jpg"
     if @space.save
       redirect_to space_path(@space)
     else
@@ -42,6 +41,6 @@ class SpacesController < ApplicationController
   # end
 
   def space_params
-    params.require(:space).permit(:title, :space_type, :location, :price)
+    params.require(:space).permit(:title, :space_type, :location, :price, :photo)
   end
 end

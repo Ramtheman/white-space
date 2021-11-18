@@ -1,6 +1,10 @@
 <h2><%= @space.title %></h2>
 <h4>Ad-space in question:</h4>
-<%= image_tag "#{@space.type_image}", class: "image"%>
+<% if @space.photo.attached? %>
+  <%= cl_image_tag @space.photo.key%>
+<% else %>
+  <%= image_tag "potato.jpg" %>
+<% end %>
 <br>
 <br>
 <p>Type of ad-space: <%= @space.space_type %></p>

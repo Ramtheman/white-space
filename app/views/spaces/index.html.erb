@@ -9,7 +9,11 @@
     <% @spaces.each do |space| %>
       <div class="col-12 col-md-6">
         <div class="card-product">
-          <%= image_tag "#{space.type_image}", class: "image"%>
+          <% if space.photo.attached? %>
+            <%= cl_image_tag space.photo.key, class: "image"%>
+          <% else %>
+            <%= image_tag "potato.jpg", class: "img" %>
+          <% end %>
           <div class="card-product-infos">
             <h4><%= link_to space.title, space_path(space) %></h4>
             <p>Owner: <%= space.user.first_name %> <%= space.user.last_name %></p>
@@ -27,7 +31,11 @@
     <% @spaces.each do |space| %>
       <div class="col-12 col-md-6">
         <div class="card-product">
-          <%= image_tag "#{space.type_image}", class: "image"%>
+          <% if space.photo.attached? %>
+            <%= cl_image_tag space.photo.key%>
+          <% else %>
+            <%= image_tag "potato.jpg", class: "img" %>
+          <% end %>
           <div class="card-product-infos">
             <h4><%= link_to space.title, space_path(space) %></h4>
             <p>Owner: <%= space.user.first_name %> <%= space.user.last_name %></p>
