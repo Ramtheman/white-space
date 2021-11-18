@@ -1,4 +1,8 @@
 <h2><%= @space.title %></h2>
+<h4>Ad-space in question:</h4>
+<%= image_tag "#{@space.type_image}", class: "image"%>
+<br>
+<br>
 <p>Type of ad-space: <%= @space.space_type %></p>
 <p>Price: £<%= @space.price %></p>
 <p>Owner: <%= @space.user.first_name %> <%= @space.user.last_name %></p>
