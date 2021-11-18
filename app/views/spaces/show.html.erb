@@ -7,10 +7,7 @@
 <p>Price: £<%= @space.price %></p>
 <p>Owner: <%= @space.user.first_name %> <%= @space.user.last_name %></p>
 
-<% if @space.user == current_user %>
-  <%= link_to 'Edit this space', edit_space_path(@space) %>
-  <br>
-<% else %>
+<% if @space.user != current_user %>
   <%= link_to 'Book this space', new_space_booking_path(@space) %>
   <br>
 <% end %>
