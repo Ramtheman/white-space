@@ -1,7 +1,7 @@
 <div class="container mt-5">
 
   <div class="row pb-5">
-  <h1>Search spaces:</h1>
+    <h1>Search spaces:</h1>
     <div id="SearchForm" >
       <%= form_tag(spaces_path, method: :get) do %>
         <%= text_field_tag(:search, params[:search]) %>
@@ -13,7 +13,7 @@
   <div class="row pb-5">
     <% @spaces.each do |space| %>
       <div class="col-12 col-md-6">
-      <%= link_to space_path(space), class: "list-link" do%>  
+      <%= link_to space_path(space), class: "list-link" do%>
         <div class="card-product">
           <% if space.photo.attached? %>
             <%= cl_image_tag space.photo.key, class: "image"%>
