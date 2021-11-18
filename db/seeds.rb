@@ -5,35 +5,43 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'faker'
-User.destroy_all
 Space.destroy_all
+User.destroy_all
 
 testers = [
-  ["Rami", "Assaf", "ramiw.assaf@gmail.com", 'password'],
-  ["Simon", "Foster", "simonfos74@gmail.com", 'password'],
-  ["Will", "Holmes", "willholmes60@gmail.com", 'password'],
-  ["Mark", "de Courcy Ling", "m.decourcyling@gmail.com", 'password']
+  { first_name: "Rami", last_name: "Assaf", email: "ramiw.assaf@gmail.com", password: 'password' },
+  { first_name: "Simon", last_name: "Foster", email: "simonfos74@gmail.com", password: 'password' },
+  { first_name: "Will", last_name: "Holmes", email: "willholmes60@gmail.com", password: 'password' },
+  { first_name: "Mark", last_name: "de Courcy Ling", email: "m.decourcyling@gmail.com", password: 'password' },
 ]
 
-postcodes = ['BR1 1AJ', 'SW8 2AA', 'NW1W 9UL', 'NW2 5TH', 'E2 0RT',
-              'E2 2DW', 'EC4M 7BU', 'N16 8LU', 'N16 8NW', 'NW1 9EL',
-              'NW6 3BR', 'NW1W 7YG', 'NW8 7DN', 'UB7 8PG', 'W10 5BG',
-              'W12 9AP', 'W1S 1BBR', 'W1U 1BW', 'W1T 7RQ', 'E1 6EB']
+# creating first user and two spaces
+rami = User.new(testers[0])
+rami.save
+face_tat = Space.new(title: 'My face', space_type: 'Tattoo', price: 1000, type_image: "tattoo.jpg", location: 'E1 6EB')
+face_tat.user = rami
+face_tat.save
+car_ad = Space.new(title: 'Post your ad on my car', space_type: 'Car sticker', price: 500, type_image: "car.jpg", location: 'E2 8DY')
+car_ad.user = rami
+car_ad.save
 
-spaces = ['Face paint', 'Bathroom stall', 'Tattoo', 'Manhole', 'Legal name', 'Oyster card']
+# creating second user and two spaces
+simon = User.new(testers[1])
+simon.save
+name_change = Space.new(title: 'I will change my name to your brand!', space_type: 'Legal name change', price: 2000, type_image: "name.jpg", location: 'W1U 1BW')
+name_change.user = simon
+name_change.save
 
-testers.each do |tester|
-  person = User.new(first_name: tester[0], last_name: tester[1], email: tester[2], password: tester[3])
-  person.save
-  5.times do
-    title = Faker::Company.name
-    space_type = spaces.sample
-    postcode_instance = postcodes.sample
-    postcodes.delete(postcode_instance)
-    price = rand(1000)
-    space = Space.new(title: title, space_type: space_type, price: price, location: postcode_instance)
-    space.user = person
-    space.save
-  end
-end
+# creating third user and two spaces
+will = User.new(testers[2])
+will.save
+bagpack = Space.new(title: 'Stylize my bagpack with your ad', space_type: 'Bagpack', price: 200, type_image: "bagpack.jpg", location: 'WC1E 6JW')
+bagpack.user = will
+bagpack.save
+
+# creating last user and two spaces
+mark = User.new(testers[3])
+mark.save
+lawn = Space.new(title: "My lawn is the perfect place for your marketing", space_type: 'Front lawn', price: 500, type_image: "lawn.jpg", location: 'NW6 3BR')
+lawn.user = mark
+lawn.save
