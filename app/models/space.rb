@@ -9,4 +9,7 @@ class Space < ApplicationRecord
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
+
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_space_type, against: [ :title, :space_type ]
 end

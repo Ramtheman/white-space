@@ -1,6 +1,12 @@
 class SpacesController < ApplicationController
   def index
-    @spaces = Space.all
+    if params[:query].present?
+      @spaces = Space.search_by_title_and_space_type(params[:query])
+      @all_spaces = false
+    else
+      @spaces = Space.all
+      @all_spaces = true
+    end
 
     @markers = @spaces.geocoded.map do |space|
       {

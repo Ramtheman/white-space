@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2021_11_18_153027) do
   create_table "spaces", force: :cascade do |t|
     t.string "title"
     t.string "space_type"
+    t.string "type_image"
     t.integer "price"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
