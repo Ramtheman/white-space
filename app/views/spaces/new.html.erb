@@ -3,16 +3,24 @@
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
         <h3>Create a new space</h3>
-        <%= simple_form_for @space do |f| %>
-          <%= f.input :title, placeholder: 'You title here' %>
-          <% space_types = ['Car sticker', 'Tattoo', 'Bagpack', 'Legal name change', 'Front lawn'] %>
+        <%= simple_form_for(@space) do |f| %>
+          <%= f.input :title, placeholder: 'Name your ad-space' %>
+          <% space_types = ['Car sticker', 'Tattoo', 'Backpack', 'Legal name change', 'Front lawn'] %>
           <%= f.input :space_type, as: :select, collection: space_types, prompt:'Type of space', label: false %>
-          <%= f.input :price, placeholder: 'Price of space' %>
-          <%= f.input :location, placeholder: 'What postcode' %>
+
+          <%= f.input :price, placeholder: 'Price per day' %>
+          <%= f.input :location,
+                      placeholder: 'Where is the ad-space?' %>,
+                      input_html: { data: { geocoder_target: "location" } },
+                      wrapper_html: { data: { controller: "geocoder",
+                      geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
           <%= f.input :photo, as: :file %>
+
           <%= f.submit class: 'btn btn-primary' %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
+<%# placeholder: 'Where is your ad-space' %>

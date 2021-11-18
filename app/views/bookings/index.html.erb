@@ -1,12 +1,16 @@
 <div class="container mt-5">
   <h1><%= current_user.first_name %>'s Bookings:</h1>
-    <% @bookings.each do |booking| %>
-    <h4>Space: <%= link_to booking.space.title, booking_path(booking) %></h4>
-    <p>Type: <%= booking.space.space_type %></p>
-    <p>Price: £<%= booking.space.price %></p>
-    <p>Owner: <%= booking.space.user.first_name %> <%= booking.space.user.last_name %></p>
-    <p>From: <%= booking.start_date %></p>
-    <p>To: <%= booking.end_date %></p>
+  <% @bookings.each do |booking| %>
+    <div class="card-product">
+      <div class="card-product-infos">
+        <p>Space: <%= booking.space.title %></p>
+        <p>Type: <%= booking.space.space_type %></p>
+        <%# <p>From: <%= booking.start_date %>
+        <%# <p>To: <%= booking.end_date %>
+        <p>Duration:</p>
+        <p>Price: £<%= booking.space.price %>/day</p>
+        <p>Total price: £</p>
+      </div>
+    </div>
   <% end %>
-  <%= link_to "Back to home", root_path, class: 'btn btn-primary' %>
 </div>
