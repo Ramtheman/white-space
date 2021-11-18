@@ -15,9 +15,13 @@
     <div class="page-container">
           <% unless action_name == "home" %>
               <div class="navbar-container"><%= render "shared/navbar" %></div>
-              <div class="footer-container"><%= render "shared/footer" %></div>
           <% end %>
-      <div class="content-container"><%= yield %></div>
+    <div class="content-container"><%= yield %></div>
+          <% unless action_name == "home" %>
+            <div class="footer-container"><%= render "shared/footer" %></div>
+          <% end %>
+
+
 
 </div>
     <p class="notice"><%= notice %></p>
