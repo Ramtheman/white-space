@@ -1,5 +1,9 @@
 <div class="container mt-5">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 60db522c0ecc13c63dd4af5a936208533a8bd321
   <%= link_to "Create new space", new_space_path, class: 'btn btn-success border mb-3' %>
   <div class="row">
     <div class="col-6">
@@ -14,6 +18,7 @@
             <%= link_to 'Edit this space', edit_space_path(space) %>
             <%= link_to "Delete this space", space_path(space), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure?"} %>
           </div>
+<<<<<<< HEAD
 =======
   <h1><%= current_user.first_name %>'s Spaces To Let</h1>
     <% @spaces.each do |space| %>
@@ -25,6 +30,9 @@
           <p>£<%= space.price %></p>
           <%= link_to "Delete this space", space_path(space), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure?"} %>
 >>>>>>> 12cdbfd3a92cedab9177feeba24ca7818515d3dc
+=======
+
+>>>>>>> 60db522c0ecc13c63dd4af5a936208533a8bd321
         </div>
       <% end %><br><br>
     </div>
