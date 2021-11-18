@@ -43,3 +43,15 @@
 .card-product .card-product-infos h4 :hover {
   color: navy;
 }
+
+.pending {
+  border-right: 12px solid orange ;
+}
+
+.approved {
+  border-right: 12px solid green ;
+}
+
+.rejected {
+  border-right: 12px solid red ;
+}
