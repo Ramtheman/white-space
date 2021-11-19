@@ -12,13 +12,19 @@
             <%= image_tag "potato.jpg", class: "img" %>
           <% end %>
           <div class="card-product-infos">
-            <h4><%= link_to space.title, space_path(space) %></h4>
-            <p><%= space.space_type %></p>
-            <p>£<%= space.price %>/day</p>
-            <%# <%= link_to 'Edit this space', edit_space_path(space) %>
-            <%= link_to "Delete this space", space_path(space), method: :delete, class: 'btn btn-danger', style: "color:white", data: {confirm: "Are you sure?"} %>
+            <div class="">
+              <h4><%= link_to space.title, space_path(space) %></h4>
+              <p><%= space.space_type %></p>
+              <% if space.space_type == 'Tattoo' %>
+              <p>£<%= space.price %>/FOREVER</p>
+              <% else %>
+              <p>£<%= space.price %>/day</p>
+              <% end %>
+            </div>
+            <div class="">
+              <%= link_to "Delete this space", space_path(space), method: :delete, class: 'btn btn-danger', style: "color:white", data: {confirm: "Are you sure?"} %>
+            </div>
           </div>
-
         </div>
       <% end %><br><br>
     </div>
@@ -33,24 +39,28 @@
                 <%= image_tag "potato.jpg", class: "img" %>
               <% end %>
               <div class="card-product-infos">
-                <p>Type: <%= booking.space.space_type %></p>
+                <p><strong><%= booking.space.title %></strong></p>
                 <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
                 <p>From: <%= booking.start_date %></p>
                 <p>To: <%= booking.end_date %></p>
-                <p>Duration:</p>
-                <p>Price: £<%= booking.space.price %>/day</p>
-                <div class="row">
-                  <div class="col"></div>
+                <% if booking.space.space_type == 'Tattoo' %>
+                <p>Total price: £<%= booking.space.price %></p>
+                <% else %>
+                <p>Total price: £<%= booking.space.price * (booking.end_date - booking.start_date).to_i %></p>
+                <% end %>
+                <div class="row my-1">
+                  <div class="col">
                     <%= simple_form_for (booking) do |f| %>
                       <%= f.hidden_field :confirmed, value: true %>
                       <%= f.submit 'Accept', class: 'btn btn-success' %>
                     <% end %>
+                  </div>
                   <div class="col">
                     <%= simple_form_for (booking) do |f| %>
                       <%= f.hidden_field :confirmed, value: false %>
                       <%= f.submit 'Reject', class: 'btn btn-danger' %>
                     <% end %>
-                </div>
+                  </div>
                 </div>
                 <%# accept button %>
                 <%# <button class="btn btn-success btn-lg"
