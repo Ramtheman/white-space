@@ -10,10 +10,10 @@ User.destroy_all
 require 'open-uri'
 
 testers = [
-  { first_name: "Rami", last_name: "Assaf", email: "ramiw.assaf@gmail.com", password: 'password' },
-  { first_name: "Simon", last_name: "Foster", email: "simonfos74@gmail.com", password: 'password' },
-  { first_name: "Will", last_name: "Holmes", email: "willholmes60@gmail.com", password: 'password' },
-  { first_name: "Mark", last_name: "de Courcy Ling", email: "m.decourcyling@gmail.com", password: 'password' },
+  { first_name: "Rami", last_name: "Assaf", email: "rami@email.com", password: 'password' },
+  { first_name: "Simon", last_name: "Foster", email: "simon@email.com", password: 'password' },
+  { first_name: "Will", last_name: "Holmes", email: "will@email.com", password: 'password' },
+  { first_name: "Mark", last_name: "de Courcy Ling", email: "mark@email.com", password: 'password' },
 ]
 
 # creating first user and two spaces
