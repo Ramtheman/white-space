@@ -27,7 +27,11 @@
         <% @my_bookings.each do |booking| %>
           <% if booking.confirmed.nil? %>
             <div class="card-product pending">
-              <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+              <% if booking.space.photo.attached? %>
+                <%= cl_image_tag booking.space.photo.key, class: "img"%>
+              <% else %>
+                <%= image_tag "potato.jpg", class: "img" %>
+              <% end %>
               <div class="card-product-infos">
                 <p>Type: <%= booking.space.space_type %></p>
                 <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
@@ -66,7 +70,11 @@
         <% @my_bookings.each do |booking| %>
             <% if booking.confirmed == true %>
               <div class="card-product approved">
-                <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+                <% if booking.space.photo.attached? %>
+                  <%= cl_image_tag booking.space.photo.key, class: "img"%>
+                <% else %>
+                  <%= image_tag "potato.jpg", class: "img" %>
+                <% end %>
                   <p>Type: <%= booking.space.space_type %></p>
                   <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
                   <p>From: <%= booking.start_date %></p>
@@ -82,7 +90,11 @@
       <% @my_bookings.each do |booking| %>
           <% if booking.confirmed == false %>
             <div class="card-product rejected">
-              <img src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg" />
+              <% if booking.space.photo.attached? %>
+                <%= cl_image_tag booking.space.photo.key, class: "img"%>
+              <% else %>
+                <%= image_tag "potato.jpg", class: "img" %>
+              <% end %>
                 <p>Type: <%= booking.space.space_type %></p>
                 <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
                 <p>From: <%= booking.start_date %></p>
