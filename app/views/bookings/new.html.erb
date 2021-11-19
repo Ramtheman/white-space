@@ -4,8 +4,8 @@
       <div class="bg-white rounded p-3 shadow">
         <h3>Create a new booking</h3>
         <%= simple_form_for [@space, @booking] do |f| %>
-          <%= f.input :start_date, placeholder: 'start date' %>
-          <%= f.input :end_date, placeholder: 'end date' %>
+          <%= f.input :start_date, placeholder: 'start date', as: :date, html5: true %>
+          <%= f.input :end_date, placeholder: 'end date', as: :date, html5: true %>
           <%= f.submit class: 'btn btn-primary' %>
         <% end %>
       </div>

@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+
     @space = Space.find(params[:space_id])
   end
 
@@ -32,6 +33,12 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to bookings_path(@user)
   end
 
   private
