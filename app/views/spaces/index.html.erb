@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div class="row pb-5">
+
     <h1>Search spaces:</h1>
     <div id="SearchForm" >
     <%= form_tag spaces_path, method: :get do %>
@@ -13,6 +13,7 @@
       <%= link_to "Back to All Spaces", spaces_path %>
     <% end %>
   <% end %>
+
 
   <h1><%= @all_spaces ? "All spaces" : "Search results" %></h1>
 
@@ -49,3 +50,4 @@
        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
   </div>
+</div>
