@@ -1,8 +1,15 @@
 <div class="container mt-5">
   <h1><%= current_user.first_name %>'s Bookings:</h1>
+  <div class="row pb-5 mt-3">
   <% @bookings.each do |booking| %>
-    <div class="card-product">
-      <div class="card-product-infos">
+    <div class="col-12 col-md-6">
+      <div class="card-product">
+        <% if booking.space.photo.attached? %>
+          <%= cl_image_tag booking.space.photo.key%>
+        <% else %>
+          <%= image_tag "potato.jpg"%>
+        <% end %>
+        <div class="card-product-infos">
         <% if booking.confirmed == true %>
           <h4 style="color:green">Status: Accepted</h4>
         <% elsif booking.confirmed == false %>
@@ -29,4 +36,5 @@
       </div>
     </div>
   <% end %>
+  </div>
 </div>
