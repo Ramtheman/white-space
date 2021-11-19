@@ -1,0 +1,14 @@
+<div class="card-product grow" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <% if space.photo.attached? %>
+    <%= cl_image_tag space.photo.key, class: "image"%>
+  <% else %>
+    <%= image_tag "potato.jpg", class: "img" %>
+  <% end %>
+  <div class="card-product-infos">
+    <h4><%= space.title %></h4>
+    <p>Owner: <%= space.user.first_name %> <%= space.user.last_name %></p>
+    <p>-------------------------</p>
+    <p><%= space.space_type %></p>
+    <p>£<%= space.price %>/day</p>
+  </div>
+</div>
