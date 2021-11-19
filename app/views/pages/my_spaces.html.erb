@@ -13,7 +13,7 @@
           <% end %>
           <div class="card-product-infos">
             <div class="">
-              <h4><%= link_to space.title, space_path(space) %></h4>
+              <h2><%= link_to space.title, space_path(space) %></h2>
               <p><%= space.space_type %></p>
               <% if space.space_type == 'Tattoo' %>
               <p>£<%= space.price %>/FOREVER</p>
@@ -39,7 +39,7 @@
                 <%= image_tag "potato.jpg", class: "img" %>
               <% end %>
               <div class="card-product-infos">
-                <p><strong><%= booking.space.title %></strong></p>
+                <h2><strong><%= booking.space.title %></strong></h2>
                 <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
                 <p>From: <%= booking.start_date %></p>
                 <p>To: <%= booking.end_date %></p>
@@ -62,14 +62,6 @@
                     <% end %>
                   </div>
                 </div>
-                <%# accept button %>
-                <%# <button class="btn btn-success btn-lg"
-                        data-booking-confirmation-target="accept"
-                        data-action="click->booking-confirmation#accept">Accept</button> %>
-                <%# reject button %>
-                <%# <button class="btn btn-danger btn-lg"
-                        data-booking-confirmation-target="reject"
-                        data-action="click->booking-confirmation#reject">Reject</button> %>
               </div>
             </div>
           <% end %>
@@ -85,12 +77,16 @@
                 <% else %>
                   <%= image_tag "potato.jpg", class: "img" %>
                 <% end %>
-                  <p>Type: <%= booking.space.space_type %></p>
-                  <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
-                  <p>From: <%= booking.start_date %></p>
-                  <p>To: <%= booking.end_date %></p>
-                  <p>Duration:</p>
-                  <p>Total price: £<%= booking.space.price %></p>
+                <div class="card-product-infos">
+                <h2><strong><%= booking.space.title %></strong></h2>
+                <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
+                <p>From: <%= booking.start_date %></p>
+                <p>To: <%= booking.end_date %></p>
+                <% if booking.space.space_type == 'Tattoo' %>
+                <p>Total price: £<%= booking.space.price %></p>
+                <% else %>
+                <p>Total price: £<%= booking.space.price * (booking.end_date - booking.start_date).to_i %></p>
+                <% end %>
               </div>
             <% end %>
         <% end %>
@@ -105,12 +101,16 @@
               <% else %>
                 <%= image_tag "potato.jpg", class: "img" %>
               <% end %>
-                <p>Type: <%= booking.space.space_type %></p>
+              <div class="card-product-infos">
+                <h2><strong><%= booking.space.title %></strong></h2>
                 <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
                 <p>From: <%= booking.start_date %></p>
                 <p>To: <%= booking.end_date %></p>
-                <p>Duration:</p>
+                <% if booking.space.space_type == 'Tattoo' %>
                 <p>Total price: £<%= booking.space.price %></p>
+                <% else %>
+                <p>Total price: £<%= booking.space.price * (booking.end_date - booking.start_date).to_i %></p>
+                <% end %>
             </div>
           <% end %>
       <% end %>
