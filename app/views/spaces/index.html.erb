@@ -29,7 +29,7 @@
     </div>
   <% end %>
 
-  <div class="container mt-5" style="padding: 0px;"> 
+  <div class="container mt-5" style="padding: 0px;">
     <h2>Search spaces</h2>
     <div id="SearchForm" >
       <div class="col-6" style="padding: 0px;">
@@ -37,15 +37,13 @@
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Find a space"
-          %>
-
+            placeholder: "Find a space" %>
+        <% end %>
       </div>
         <%= submit_tag "Search", class: "btn btn-dark" %>
         <% if @all_spaces == false %>
           <%= button_to "Back to All Spaces", spaces_path(params[query: '']), class: 'btn btn-outline-dark' %>
         <% end %>
-      </div>
     </div>
   </div>
 
