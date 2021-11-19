@@ -4,26 +4,24 @@
     <div class="row pb-5 mt-3">
       <% @spaces[0...2].each do |space| %>
         <div class="col-12 col-md-6">
-          <%= link_to space_path(space), class: "list-link", :id => 'example', "data-toggle" => "modal", 'data-target' => '#exampleModal' do %>
-            <div class="card-product grow">
-              <% if space.photo.attached? %>
-                <%= cl_image_tag space.photo.key, class: "image"%>
+          <div class="card-product grow">
+            <% if space.photo.attached? %>
+              <%= cl_image_tag space.photo.key, class: "image"%>
+            <% else %>
+              <%= image_tag "potato.jpg", class: "img" %>
+            <% end %>
+            <div class="card-product-infos">
+              <h4><%= link_to space.title, space_path(space) %></h4>
+              <p>Owner: <%= space.user.first_name %> <%= space.user.last_name %></p>
+              <p>-------------------------</p>
+              <p><%= space.space_type %></p>
+              <% if space.space_type == "Tattoo" %>
+                <p>£<%= space.price %>/FOREVER</p>
               <% else %>
-                <%= image_tag "potato.jpg", class: "img" %>
+                <p>£<%= space.price %>/day</p>
               <% end %>
-              <div class="card-product-infos">
-                <h4><%= space.title %></h4>
-                <p>Owner: <%= space.user.first_name %> <%= space.user.last_name %></p>
-                <p>-------------------------</p>
-                <p><%= space.space_type %></p>
-                <% if space.space_type == "Tattoo" %>
-                  <p>£<%= space.price %>/FOREVER</p>
-                <% else %>
-                  <p>£<%= space.price %>/day</p>
-                <% end %>
-              </div>
             </div>
-          <% end  %>
+          </div>
         </div>
       <% end %>
     </div>
@@ -55,7 +53,6 @@
     <% @spaces.each do |space| %>
       <div class="col-12 col-md-6">
         <%# <%= link_to space_path(space), class: "list-link" do %>
-        <%= link_to space_path(space), class: "list-link", :id => 'example', "data-toggle" => "modal", 'data-target' => '#exampleModal' do %>
         <%# <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Launch demo modal</button> %>
           <div class="card-product grow" id="example" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <% if space.photo.attached? %>
@@ -64,7 +61,7 @@
               <%= image_tag "potato.jpg", class: "img" %>
             <% end %>
             <div class="card-product-infos">
-              <h2><%= space.title %></h2>
+              <h2><%= link_to space.title, space_path(space) %></h2>
               <p>Owner: <%= space.user.first_name %> <%= space.user.last_name %></p>
               <p>-------------------------</p>
               <p><%= space.space_type %></p>
@@ -77,7 +74,7 @@
             <%# Modal: %>
 
           </div>
-        <% end %>
+
       </div>
     <% end %>
   </div>
