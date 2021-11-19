@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div class="row pb-5">
+
     <h1>Search spaces:</h1>
     <div id="SearchForm" >
     <%= form_tag spaces_path, method: :get do %>
@@ -10,13 +10,14 @@
     %>
     <%= submit_tag "Search", class: "btn btn-primary" %>
     <% if @all_spaces == false %>
-      <%= button_to "Back to All Spaces", spaces_path %>
+      <%= link_to "Back to All Spaces", spaces_path %>
     <% end %>
   <% end %>
 
+
   <h1><%= @all_spaces ? "All spaces" : "Search results" %></h1>
 
-  <div class="row pb-5">
+  <div class="row pb-5 mt-3">
     <% @spaces.each do |space| %>
       <div class="col-12 col-md-6">
       <%= link_to space_path(space), class: "list-link" do%>
@@ -33,43 +34,17 @@
             <p>Owner: <%= space.user.first_name %> <%= space.user.last_name %></p>
             <p>-------------------------</p>
             <p><%= space.space_type %></p>
-            <p>£<%= space.price %></p>
-          </div>
-        </div>
-     <% end %>
-      </div>
-    <% end %>
-  </div>
-
-
-  <h1>All Spaces</h1>
-  <div class="row pb-5 mt-3">
-    <% @spaces.each do |space| %>
-      <div class="col-12 col-md-6">
-      <%= link_to space_path(space), class: "list-link" do%>
-        <div class="card-product grow ">
-          <% if space.photo.attached? %>
-            <%= cl_image_tag space.photo.key%>
-          <% else %>
-            <%= image_tag "potato.jpg", class: "img" %>
-          <% end %>
-
-          <div class="card-product-infos">
-            <h4><%= space.title %></h4>
-            <p>Owner: <%= space.user.first_name %> <%= space.user.last_name %></p>
-            <p>-------------------------</p>
-            <p><%= space.space_type %></p>
             <% if space.space_type == "Tattoo" %>
               <p>£<%= space.price %>/day</p>
             <% else %>
               <p>£<%= space.price %>/FOREVER</p>
             <% end %>
+            <p>£<%= space.price %>/day</p>
           </div>
         </div>
-      <% end %>
+     <% end %>
       </div>
     <% end %>
-
   </div>
 
   <h3> Where you can find our spaces </h3>
@@ -80,3 +55,4 @@
        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
   </div>
+</div>
