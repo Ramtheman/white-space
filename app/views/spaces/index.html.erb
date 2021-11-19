@@ -3,18 +3,19 @@
   <h1>Search spaces:</h1>
   <div id="SearchForm" >
     <div class='col-6'>
-    <%= form_tag spaces_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a space"
-    %>
-    <br>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% if @all_spaces == false %>
-      <%= button_to "Back to All Spaces", spaces_path(params[query: '']), class: 'btn btn-warning' %>
-    <% end %>
-    <% end %>
+      <div class="mb-1">
+        <%= form_tag spaces_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a space..."
+          %>
+      </div>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% if @all_spaces == false %>
+          <%= button_to "Back to All Spaces", spaces_path(params[query: '']), class: 'btn btn-warning' %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 
@@ -33,7 +34,7 @@
             <%= image_tag "potato.jpg", class: "img" %>
           <% end %>
           <div class="card-product-infos">
-            <h4><%= space.title %></h4>
+            <h2><%= space.title %></h2>
             <p>Owner: <%= space.user.first_name %> <%= space.user.last_name %></p>
             <p>-------------------------</p>
             <p><%= space.space_type %></p>
