@@ -1,16 +1,25 @@
 <div class="container mt-5">
   <h1><%= current_user.first_name %>'s Bookings:</h1>
+  <div class="row pb-5 mt-3">
   <% @bookings.each do |booking| %>
-    <div class="card-product">
-      <div class="card-product-infos">
-        <p>Space: <%= booking.space.title %></p>
-        <p>Type: <%= booking.space.space_type %></p>
-        <%# <p>From: <%= booking.start_date %>
-        <%# <p>To: <%= booking.end_date %>
-        <p>Duration:</p>
-        <p>Price: £<%= booking.space.price %>/day</p>
-        <p>Total price: £</p>
+    <div class="col-12 col-md-6">
+      <div class="card-product">
+        <% if booking.space.photo.attached? %>
+          <%= cl_image_tag booking.space.photo.key%>
+        <% else %>
+          <%= image_tag "potato.jpg"%>
+        <% end %>
+        <div class="card-product-infos">
+          <p>Space: <%= booking.space.title %></p>
+          <p>Type: <%= booking.space.space_type %></p>
+          <%# <p>From: <%= booking.start_date %>
+          <%# <p>To: <%= booking.end_date %>
+          <p>Duration:</p>
+          <p>Price: £<%= booking.space.price %>/day</p>
+          <p>Total price: £</p>
+        </div>
       </div>
     </div>
   <% end %>
+  </div>
 </div>
