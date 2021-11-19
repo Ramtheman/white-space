@@ -41,11 +41,11 @@
               <div class="card-product-infos">
                 <h2><strong><%= booking.space.title %></strong></h2>
                 <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
-                <p>From: <%= booking.start_date %></p>
-                <p>To: <%= booking.end_date %></p>
                 <% if booking.space.space_type == 'Tattoo' %>
+                <p><%= booking.start_date %></p>
                 <p>Total price: £<%= booking.space.price %></p>
                 <% else %>
+                <p><%= booking.start_date %> for <%= (booking.end_date - booking.start_date).to_i %> days</p>
                 <p>Total price: £<%= booking.space.price * (booking.end_date - booking.start_date).to_i %></p>
                 <% end %>
                 <div class="row my-1">
@@ -80,11 +80,11 @@
                 <div class="card-product-infos">
                 <h2><strong><%= booking.space.title %></strong></h2>
                 <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
-                <p>From: <%= booking.start_date %></p>
-                <p>To: <%= booking.end_date %></p>
                 <% if booking.space.space_type == 'Tattoo' %>
+                <p><%= booking.start_date %></p>
                 <p>Total price: £<%= booking.space.price %></p>
                 <% else %>
+                <p><%= booking.start_date %> for <%= (booking.end_date - booking.start_date).to_i %> days</p>
                 <p>Total price: £<%= booking.space.price * (booking.end_date - booking.start_date).to_i %></p>
                 <% end %>
               </div>
@@ -104,11 +104,11 @@
               <div class="card-product-infos">
                 <h2><strong><%= booking.space.title %></strong></h2>
                 <p>Booked by: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
-                <p>From: <%= booking.start_date %></p>
-                <p>To: <%= booking.end_date %></p>
                 <% if booking.space.space_type == 'Tattoo' %>
+                <p><%= booking.start_date %></p>
                 <p>Total price: £<%= booking.space.price %></p>
                 <% else %>
+                <p><%= booking.start_date %> for <%= (booking.end_date - booking.start_date).to_i %> days</p>
                 <p>Total price: £<%= booking.space.price * (booking.end_date - booking.start_date).to_i %></p>
                 <% end %>
             </div>
