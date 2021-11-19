@@ -3,13 +3,29 @@
   <% @bookings.each do |booking| %>
     <div class="card-product">
       <div class="card-product-infos">
+        <% if booking.confirmed == true %>
+          <h4 style="color:green">Status: Accepted</h4>
+        <% elsif booking.confirmed == false %>
+          <h4 style="color:red">Status: Rejected</h4>
+        <% else %>
+          <h4 style="color:orange">Status: Awaiting confirmation</h4>
+        <% end %>
         <p>Space: <%= booking.space.title %></p>
         <p>Type: <%= booking.space.space_type %></p>
         <%# <p>From: <%= booking.start_date %>
         <%# <p>To: <%= booking.end_date %>
-        <p>Duration:</p>
+        <% if booking.space.space_type == 'Tattoo' %>
+        <p>Duration: FOREVER</p>
+        <p>Total price: £<%= booking.space.price %></p>
+        <% else %>
+        <p>Duration: <%= (booking.end_date - booking.start_date).to_i %> days</p>
         <p>Price: £<%= booking.space.price %>/day</p>
-        <p>Total price: £</p>
+        <p>Total price: £<%= booking.space.price * (booking.end_date - booking.start_date).to_i %></p>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to 'Edit your booking', bookings_path %>
+        <%= link_to 'Cancel your booking', booking_path(booking), method: :delete, class: 'btn btn-danger', style: "color:white", data: {confirm: "Are you sure?"} %>
       </div>
     </div>
   <% end %>
