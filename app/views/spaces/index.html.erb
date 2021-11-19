@@ -17,9 +17,10 @@
     <% end %>
     </div>
   </div>
+
   <h1><%= @all_spaces ? "All spaces" : "Search results" %></h1>
 
-  <div class="row pb-5">
+  <div class="row pb-5 mt-3">
     <% @spaces.each do |space| %>
       <div class="col-12 col-md-6">
       <%= link_to space_path(space), class: "list-link" do%>
@@ -36,7 +37,12 @@
             <p>Owner: <%= space.user.first_name %> <%= space.user.last_name %></p>
             <p>-------------------------</p>
             <p><%= space.space_type %></p>
-            <p>£<%= space.price %></p>
+            <% if space.space_type == "Tattoo" %>
+              <p>£<%= space.price %>/day</p>
+            <% else %>
+              <p>£<%= space.price %>/FOREVER</p>
+            <% end %>
+            <p>£<%= space.price %>/day</p>
           </div>
         </div>
      <% end %>
