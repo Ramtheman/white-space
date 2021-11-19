@@ -1,20 +1,27 @@
-<h2><%= @space.title %></h2>
-<h4>Ad-space in question:</h4>
+<div class="container mt-5">
+  <div class="col-12 col-md-6">
+      <h1>Ad-space in question:</h1>
+        <div class="card-product grow">
 
-<% if @space.photo.attached? %>
-  <%= cl_image_tag @space.photo.key, style:"height:250px"%>
-<% else %>
-  <%= image_tag "potato.jpg", style:"height:250px" %>
-<% end %>
+          <% if @space.photo.attached? %>
+            <%= cl_image_tag @space.photo.key, style:"height:250px"%>
+          <% else %>
+            <%= image_tag "potato.jpg", style:"height:250px" %>
+          <% end %>
+            <div class="card-product-infos">
+              <h2><%= @space.title %></h2>
+              <p>Type of ad-space: <%= @space.space_type %></p>
+              <p>Price: £<%= @space.price %></p>
+              <p>Owner: <%= @space.user.first_name %> <%= @space.user.last_name %></p>
+            </div>
 
-<br>
-<br>
-<p>Type of ad-space: <%= @space.space_type %></p>
-<p>Price: £<%= @space.price %></p>
-<p>Owner: <%= @space.user.first_name %> <%= @space.user.last_name %></p>
+        </div>
 
-<% if @space.user != current_user %>
-  <%= link_to 'Book this space', new_space_booking_path(@space) %>
-  <br>
-<% end %>
-<%= link_to 'Back to spaces list', spaces_path %>
+    <% if @space.user != current_user %>
+      <%= link_to 'Book this space', new_space_booking_path(@space), class: 'btn btn-outline-dark' %>
+    <% end %>
+    <%= link_to 'Back to spaces list', spaces_path, class: 'btn btn-outline-secondary' %>
+
+  </div>
+
+</div>
