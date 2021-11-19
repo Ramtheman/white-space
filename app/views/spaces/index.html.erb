@@ -1,19 +1,22 @@
 <div class="container mt-5">
 
-    <h1>Search spaces:</h1>
-    <div id="SearchForm" >
+  <h1>Search spaces:</h1>
+  <div id="SearchForm" >
+    <div class='col-6'>
     <%= form_tag spaces_path, method: :get do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
       placeholder: "Find a space"
     %>
+    <br>
     <%= submit_tag "Search", class: "btn btn-primary" %>
     <% if @all_spaces == false %>
-      <%= link_to "Back to All Spaces", spaces_path %>
+      <%= button_to "Back to All Spaces", spaces_path, class: 'btn btn-warning' %>
     <% end %>
-  <% end %>
-
+    <% end %>
+    </div>
+  </div>
 
   <h1><%= @all_spaces ? "All spaces" : "Search results" %></h1>
 
@@ -25,7 +28,7 @@
         <div class="card-product grow">
 
           <% if space.photo.attached? %>
-            <%= cl_image_tag space.photo.key, class: "image"%>
+            <%= cl_image_tag space.photo.key, class: "img"%>
           <% else %>
             <%= image_tag "potato.jpg", class: "img" %>
           <% end %>
