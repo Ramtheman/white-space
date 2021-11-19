@@ -1,7 +1,7 @@
 <div class="container mt-5">
 
-  <h1>Search spaces:</h1>
   <div id="SearchForm" >
+  <h1>Search spaces:</h1>
     <div class='col-6'>
       <div class="mb-1">
         <%= form_tag spaces_path, method: :get do %>
@@ -11,14 +11,14 @@
             placeholder: "Find a space..."
           %>
       </div>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <%= submit_tag "Search", class: "btn btn-dark" %>
         <% if @all_spaces == false %>
-          <%= button_to "Back to All Spaces", spaces_path(params[query: '']), class: 'btn btn-warning' %>
+          <%= button_to "Back to All Spaces", spaces_path(params[query: '']), class: 'btn btn-outline-dark' %>
         <% end %>
       <% end %>
     </div>
   </div>
-
+  <br>
   <h1><%= @all_spaces ? "All spaces" : "Search results" %></h1>
 
   <div class="row pb-5 mt-3">
